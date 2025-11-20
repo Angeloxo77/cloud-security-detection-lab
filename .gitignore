@@ -1,0 +1,138 @@
+# ----------------------------------------
+# OS / Editor / IDE
+# ----------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.bak
+*.old
+*.log
+*.cache
+*.lock
+
+# VSCode
+.vscode/
+.history/
+
+# PyCharm / IntelliJ
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# Node / NPM (por si usas herramientas web)
+node_modules/
+
+# ----------------------------------------
+# Terraform
+# ----------------------------------------
+# State files (SIEMPRE deben estar fuera del repo)
+*.tfstate
+*.tfstate.*
+terraform.tfstate
+terraform.tfstate.backup
+
+# Crash logs
+crash.log
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
+
+# Terraform local directories
+.terraform/
+.terraform.lock.hcl
+
+# ----------------------------------------
+# Ansible
+# ----------------------------------------
+# Vault keys
+*.vault_pass
+*.vault-key
+*.vault
+
+# Inventory files with sensitive info
+inventory.ini
+inventory.yaml
+inventory.yml
+
+# Fact cache
+facts/
+*.retry
+
+# ----------------------------------------
+# Logs (Windows, Linux, Sentinel examples)
+# ----------------------------------------
+*.evtx
+*.evt
+*.etl
+syslog*
+auth.log*
+kern.log*
+messages*
+secure*
+audit.log*
+
+# Sentinel exported logs
+sentinel-export*
+*.jsonl
+
+# ----------------------------------------
+# Hardening scripts / sensitive outputs
+# ----------------------------------------
+*.ps1_history
+*.kusto
+*.kql.history
+
+# ----------------------------------------
+# Keys / Certs / Secrets
+# ----------------------------------------
+*.pem
+*.key
+*.crt
+*.cer
+*.pfx
+*.pub
+id_rsa
+id_rsa.pub
+id_ecdsa
+id_ecdsa.pub
+id_ed25519
+id_ed25519.pub
+
+# ----------------------------------------
+# Reports / temporary documents
+# ----------------------------------------
+*.pdf~
+*.tmp.pdf
+~$*.docx
+~$*.xlsx
+
+# ----------------------------------------
+# Tools output
+# ----------------------------------------
+scan_results/
+nmap_scan*
+nessus_scan*
+mimikatz_output*
+hashdump*
+loot/
+dumps/
+
+# ----------------------------------------
+# Compiled binaries (por si compilas algo)
+# ----------------------------------------
+*.exe
+*.dll
+*.so
+*.o
+*.out
+
+# ----------------------------------------
+# Images raw
+# ----------------------------------------
+*.xcf
+*.psd
