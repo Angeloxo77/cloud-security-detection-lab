@@ -73,7 +73,7 @@ New-NetFirewallRule @firewallParams
 As we have two different OS on our assets, we will be accessing differently. Windows requires user and password while in the other hand we will use a SSH key file for Linux.
 
 The playbook for the inventory would look something like this:
-´´´Yaml
+```yaml
 all:
   hosts:
     wserver01:
@@ -86,7 +86,7 @@ all:
       ansible_host: 10.0.0.1
       ansible_user: user
       ansible_ssh_private_key_file: "~/.ssh/id_ed25519"
-´´´
+```
 ---
 ## Playbooks
 
@@ -116,7 +116,7 @@ For this specific case, we are only allowing SSH access, but we could perfectly 
     policy: deny
 ```
 ### SSH Configuration Playbook
-We will disable SSH password authentication
+We will disable SSH password authentication and root login
 ```yaml
 - name: Install SSH service if it is not by default
   ansible.builtin.package:
