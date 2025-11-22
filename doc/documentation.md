@@ -67,3 +67,33 @@ $firewallParams = @{
 }
 New-NetFirewallRule @firewallParams
 ```
+---
+## Inventory
+
+As we have two different OS on our assets, we will be accessing differently. Windows requires user and password while in the other hand we will use a SSH key file for Linux.
+
+The playbook for the inventory would look something like this:
+´´´Yaml
+all:
+  hosts:
+    wserver01:
+      ansible_host: 10.0.0.2
+      ansible_user: user
+      ansible_password: "{{ vault_win_pass }}"
+      ansible_connection: winrm
+
+    debian01:
+      ansible_host: 10.0.0.1
+      ansible_user: user
+      ansible_ssh_private_key_file: "~/.ssh/id_ed25519"
+´´´
+---
+## Playbooks
+
+For the playbooks, we will using them for assets hardening mainly, starting with Linux.
+
+For my playbooks i will be setting up the following things:
+
+    - UFW (deny all except ssh)
+    - SSH only login without password
+    - Fail2ban installation

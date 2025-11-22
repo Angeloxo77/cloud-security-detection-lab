@@ -1,0 +1,9 @@
+- name: Allow SSH
+  ufw:
+    rule: allow
+    port: 22
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+    policy: deny
