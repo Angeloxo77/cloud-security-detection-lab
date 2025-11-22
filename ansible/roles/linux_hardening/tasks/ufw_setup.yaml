@@ -1,3 +1,8 @@
+- name: Ensure package is installed
+  apt:
+    name: ufw
+    state: present
+
 - name: Allow SSH
   ufw:
     rule: allow

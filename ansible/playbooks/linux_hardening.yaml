@@ -1,0 +1,10 @@
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: Apply Linux Hardening
+  hosts: linux
+  become: yes
+  roles:
+    - linux_hardening

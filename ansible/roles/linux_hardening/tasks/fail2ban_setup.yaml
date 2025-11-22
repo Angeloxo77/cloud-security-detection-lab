@@ -1,0 +1,9 @@
+- name: Fail2ban package installation
+  ansible.builtin.package:
+    name: fail2ban
+    state: present
+
+- name: Copy Fail2ban .local file
+  ansible.builtin.copy:
+    src: "../files/jail.local"
+    dest: "/etc/fail2ban/"
