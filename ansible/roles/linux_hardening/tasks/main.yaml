@@ -1,0 +1,8 @@
+- name: Set Up UFW
+  include_tasks: ufw_setup.yaml
+
+- name: Set Up SSH
+  include_tasks: ssh_setup.yaml
+
+- name: Set Up Fail2ban
+  include_tasks: fail2ban_setup.yaml
