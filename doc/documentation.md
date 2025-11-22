@@ -92,7 +92,8 @@ all:
 
 For the playbooks, we will using them for assets hardening mainly, starting with Linux.
 
-For my playbooks i will be setting up the following things:
+### Unix (Debian)
+For my linux playbooks i will be setting up the following things:
 
     - UFW (deny all except ssh)
     - SSH only login without password
