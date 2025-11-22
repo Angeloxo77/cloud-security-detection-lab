@@ -67,12 +67,15 @@ $firewallParams = @{
 }
 New-NetFirewallRule @firewallParams
 ```
+
 ---
+
 ## Inventory
 
 As we have two different OS on our assets, we will be accessing differently. Windows requires user and password while in the other hand we will use a SSH key file for Linux.
 
 The playbook for the inventory would look something like this:
+
 ```yaml
 all:
   hosts:
@@ -87,19 +90,25 @@ all:
       ansible_user: user
       ansible_ssh_private_key_file: "~/.ssh/id_ed25519"
 ```
+
 ---
+
 ## Playbooks
 
 For the playbooks, we will using them for assets hardening mainly, starting with Linux.
 
 ### Unix (Debian)
+
 For my linux playbooks i will be setting up the following things:
 
     - UFW (deny all except ssh)
     - SSH only login without password
     - Fail2ban installation
-### UFW Configuration Playbook
+
+#### UFW Configuration Playbook
+
 For this specific case, we are only allowing SSH access, but we could perfectly enable any other service/port, such as HTTP/HTTPS(80/443), mySQL(3306), 
+
 ```yaml
 - name: Ensure package is installed
   apt:
@@ -116,8 +125,11 @@ For this specific case, we are only allowing SSH access, but we could perfectly 
     state: enabled
     policy: deny
 ```
+
 ### SSH Configuration Playbook
+
 We will disable SSH password authentication and root login
+
 ```yaml
 - name: Install SSH service if it is not by default
   ansible.builtin.package:
@@ -142,8 +154,11 @@ We will disable SSH password authentication and root login
   notify:
     - restart ssh
 ```
+
 ### Fail2ban Configuration Playbook
+
 Installation of the package and copy config files.
+
 ```yaml
 - name: Fail2ban package installation
   ansible.builtin.package:
@@ -155,12 +170,15 @@ Installation of the package and copy config files.
     src: "../files/jail.local"
     dest: "/etc/fail2ban/"
 ```
+
 ---
+
 ## Files
 
 In the files section, we will be setting up default config files already configured to be secure.
 
 In my case, I will be hardening the SSH protocol with some parametters:
+
 ```
 [sshd]
 enabled = true
@@ -180,6 +198,7 @@ filter = pam-generic
 logpath = /var/log/auth.log
 maxretry = 5
 ```
+
 With this fail2ban will:
     - Enrich log files for future SIEM forward and parse (action).
     - Set 3 maximum tries for login.
